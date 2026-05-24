@@ -1,0 +1,117 @@
+{
+  "brand": {
+    "name": "Piper Deck",
+    "subtitle": "Cabañas de madera",
+    "logo": "assets/logo_principal.jpg"
+  },
+  "hero": {
+    "image": "assets/foto_principal.jpg",
+    "imageAlt": "Cabaña de madera con deck exterior y ventanales",
+    "eyebrow": "Fabricación artesanal y obra completa",
+    "title": "Cabañas de madera listas para habitar, descansar o alquilar",
+    "text": "Construcción a medida con estructura, revestimientos, interiores, decks y detalles exteriores resueltos por un mismo equipo.",
+    "primaryButton": "Pedir presupuesto",
+    "secondaryButton": "Ver trabajos realizados"
+  },
+  "stats": [
+    {
+      "value": "10+",
+      "label": "años de oficio en madera"
+    },
+    {
+      "value": "28-55",
+      "label": "días promedio por obra"
+    },
+    {
+      "value": "Interior + exterior",
+      "label": "proyectos entregados completos"
+    }
+  ],
+  "about": {
+    "image": "assets/cabana-3.jpg",
+    "imageAlt": "Cabaña de madera elevada con galería frontal",
+    "eyebrow": "Quiénes somos",
+    "title": "PIPER Carpintería General",
+    "text": "Somos una empresa familiar dedicada a ofrecer soluciones en carpintería con calidad, responsabilidad y atención personalizada. Diseñamos, fabricamos e instalamos cabañas de madera a medida para proyectos residenciales, turísticos y comerciales, cuidando cada etapa desde la estructura hasta las terminaciones.",
+    "bullets": [
+      "Asesoramiento según terreno, uso y presupuesto.",
+      "Diseño funcional para vivienda, descanso o alquiler turístico.",
+      "Terminaciones interiores y exteriores coordinadas."
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Galería visual",
+    "title": "Cuatro trabajos reales para apreciar terminaciones y exteriores",
+    "carouselTitle": "Cabañas realizadas",
+    "items": [
+      {
+        "image": "assets/cabana-1.jpg",
+        "alt": "Cabaña compacta de madera con deck frontal",
+        "caption": "Cabaña compacta con deck frontal"
+      },
+      {
+        "image": "assets/cabana-2.jpg",
+        "alt": "Cabaña de madera con deck amplio y baranda exterior",
+        "caption": "Deck amplio con baranda y acceso exterior"
+      },
+      {
+        "image": "assets/cabana3.png",
+        "alt": "Cabaña de madera elevada con galería frontal",
+        "caption": "Cabaña con galería y techo inclinado"
+      },
+      {
+        "image": "assets/cabana-4.png",
+        "alt": "Cabaña de madera en campo abierto con galería lateral",
+        "caption": "Cabaña en campo abierto con galería lateral"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Servicios",
+    "title": "Lo necesario para entregar una cabaña completa",
+    "cta": "Consultar mi proyecto",
+    "items": [
+      {
+        "number": "01",
+        "title": "Fabricación a medida",
+        "text": "Cabañas adaptadas al terreno, uso, cantidad de ambientes y estilo buscado."
+      },
+      {
+        "number": "02",
+        "title": "Interiores listos",
+        "text": "Revestimientos, divisiones, cielorrasos, muebles simples y terminaciones."
+      },
+      {
+        "number": "03",
+        "title": "Decks y exteriores",
+        "text": "Galerías, accesos, aleros, pérgolas y protecciones para mejorar durabilidad."
+      },
+      {
+        "number": "04",
+        "title": "Plan de obra",
+        "text": "Orden de etapas, tiempos estimados y comunicación clara durante el trabajo."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Consultas y presupuestos",
+    "title": "Contame qué cabaña querés construir",
+    "text": "Enviá la ubicación del terreno, uso esperado y medidas aproximadas. Te respondo con una primera orientación para avanzar con el presupuesto.",
+    "phone": "011 15-2496-7668",
+    "phoneLabel": "Lunes a sábado, 8:00 a 18:00",
+    "email": "pipercarpinteria@gmail.com",
+    "emailLabel": "Correo electrónico",
+    "facebookName": "Piper",
+    "facebookUrl": "https://www.facebook.com/profile.php?id=61585999135006",
+    "facebookLabel": "Facebook",
+    "address": "Tómas de Anchorena, Pilar, Argentina, 1629",
+    "addressLabel": "Ubicación",
+    "whatsappNumber": "540111524967668",
+    "whatsappMessage": "Hola, quiero consultar por una cabaña a medida.",
+    "whatsappButton": "Hablar por WhatsApp"
+  },
+  "footer": {
+    "name": "Piper Cabañas",
+    "text": "Fabricación artesanal de cabañas en madera."
+  }
+}

@@ -47,22 +47,42 @@
       {
         "image": "assets/cabana-1.jpg",
         "alt": "Cabaña compacta de madera con deck frontal",
-        "caption": "Cabaña compacta con deck frontal"
+        "caption": "Cabaña compacta con deck frontal",
+        "name": "Cabaña compacta con deck frontal",
+        "description": "",
+        "details": [],
+        "interiorImages": [],
+        "constructionImages": []
       },
       {
         "image": "assets/cabana-2.jpg",
         "alt": "Cabaña de madera con deck amplio y baranda exterior",
-        "caption": "Deck amplio con baranda y acceso exterior"
+        "caption": "Deck amplio con baranda y acceso exterior",
+        "name": "Deck amplio con baranda y acceso exterior",
+        "description": "",
+        "details": [],
+        "interiorImages": [],
+        "constructionImages": []
       },
       {
         "image": "assets/cabana3.png",
         "alt": "Cabaña de madera elevada con galería frontal",
-        "caption": "Cabaña con galería y techo inclinado"
+        "caption": "Cabaña con galería y techo inclinado",
+        "name": "Cabaña con galería y techo inclinado",
+        "description": "",
+        "details": [],
+        "interiorImages": [],
+        "constructionImages": []
       },
       {
         "image": "assets/cabana-4.png",
         "alt": "Cabaña de madera en campo abierto con galería lateral",
-        "caption": "Cabaña en campo abierto con galería lateral"
+        "caption": "Cabaña en campo abierto con galería lateral",
+        "name": "Cabaña en campo abierto con galería lateral",
+        "description": "",
+        "details": [],
+        "interiorImages": [],
+        "constructionImages": []
       }
     ]
   },

@@ -754,3 +754,388 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── Cabin card hover ─────────────────────────────────────────── */
+
+.cabin-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.cabin-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 22px 20px;
+  background: rgba(20, 29, 24, 0);
+  transition: background 0.32s ease;
+  pointer-events: none;
+}
+
+.cabin-card:hover .cabin-card-overlay,
+.cabin-card:focus-visible .cabin-card-overlay {
+  background: rgba(20, 29, 24, 0.48);
+}
+
+.cabin-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--clay);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.cabin-card:hover .cabin-card-cta,
+.cabin-card:focus-visible .cabin-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cabin-card:focus-visible {
+  outline: 3px solid var(--clay);
+  outline-offset: 3px;
+}
+
+/* ─── Cabin modal overlay ──────────────────────────────────────── */
+
+.cabin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(14, 20, 17, 0.72);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.22s ease;
+}
+
+.cabin-modal-overlay[hidden] {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.cabin-modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: var(--paper);
+  overflow-y: auto;
+  box-shadow: 0 40px 120px rgba(14, 20, 17, 0.45);
+  animation: slideUp 0.28s ease;
+  scrollbar-width: thin;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(32px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.cabin-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(14, 20, 17, 0.52);
+  color: var(--white);
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.cabin-modal-close:hover {
+  background: var(--clay);
+  transform: scale(1.08);
+}
+
+/* ─── Modal hero ───────────────────────────────────────────────── */
+
+.cabin-modal-hero {
+  position: relative;
+  height: clamp(240px, 40vw, 420px);
+  overflow: hidden;
+  background: var(--olive-dark);
+}
+
+.cabin-modal-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.cabin-modal-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 20, 17, 0.85) 0%,
+    rgba(14, 20, 17, 0.3) 50%,
+    rgba(14, 20, 17, 0.05) 100%
+  );
+}
+
+.cabin-modal-hero-info {
+  position: absolute;
+  bottom: 28px;
+  left: 32px;
+  right: 60px;
+  color: var(--white);
+}
+
+.cabin-modal-tag {
+  margin: 0 0 6px;
+  color: #e7bd83;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cabin-modal-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 4vw, 36px);
+  line-height: 1.1;
+  color: var(--white);
+}
+
+/* ─── Modal body ───────────────────────────────────────────────── */
+
+.cabin-modal-body {
+  padding: clamp(24px, 4vw, 40px);
+  display: grid;
+  gap: 32px;
+}
+
+.cabin-modal-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* Data chips */
+.cabin-modal-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cabin-detail-chip {
+  display: grid;
+  gap: 2px;
+  padding: 12px 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(30, 33, 29, 0.06);
+  min-width: 110px;
+}
+
+.chip-label {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--clay);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.chip-value {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--olive-dark);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Gallery sections */
+.cabin-modal-section[hidden] {
+  display: none;
+}
+
+.cabin-modal-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: 20px;
+  color: var(--olive-dark);
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.cabin-modal-section-icon {
+  font-size: 22px;
+}
+
+.cabin-modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.modal-thumb {
+  display: block;
+  border: none;
+  padding: 0;
+  cursor: zoom-in;
+  overflow: hidden;
+  background: var(--olive-dark);
+  aspect-ratio: 4/3;
+  position: relative;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.32s ease, opacity 0.22s ease;
+}
+
+.modal-thumb:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(30, 33, 29, 0.2);
+}
+
+.modal-thumb:hover img {
+  transform: scale(1.06);
+  opacity: 0.88;
+}
+
+/* CTA */
+.cabin-modal-cta {
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+}
+
+.cabin-modal-cta .button {
+  min-width: 240px;
+}
+
+/* ─── Lightbox ─────────────────────────────────────────────────── */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(6, 10, 8, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.18s ease;
+}
+
+.lightbox-overlay[hidden] {
+  display: none;
+}
+
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.22s ease;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-size: 40px;
+  line-height: 1;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-size: 20px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  z-index: 2;
+}
+
+.lightbox-close:hover {
+  background: var(--clay);
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ─── Responsive modal ─────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .cabin-modal-hero-info {
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .cabin-modal-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+  }
+
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+}
+

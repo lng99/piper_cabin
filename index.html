@@ -108,21 +108,25 @@
             </div>
           </div>
           <div class="carousel-track" data-carousel="exterior">
-            <figure>
+            <figure class="cabin-card" data-cabin-index="0" role="button" tabindex="0" aria-label="Ver detalle de esta cabaña">
               <img src="assets/cabana-1.jpg" alt="Cabaña compacta de madera con deck frontal" />
               <figcaption>Cabaña compacta con deck frontal</figcaption>
+              <div class="cabin-card-overlay"><span class="cabin-card-cta">Ver más →</span></div>
             </figure>
-            <figure>
+            <figure class="cabin-card" data-cabin-index="1" role="button" tabindex="0" aria-label="Ver detalle de esta cabaña">
               <img src="assets/cabana-2.jpg" alt="Cabaña de madera con deck amplio y baranda exterior" />
               <figcaption>Deck amplio con baranda y acceso exterior</figcaption>
+              <div class="cabin-card-overlay"><span class="cabin-card-cta">Ver más →</span></div>
             </figure>
-            <figure>
+            <figure class="cabin-card" data-cabin-index="2" role="button" tabindex="0" aria-label="Ver detalle de esta cabaña">
               <img src="assets/cabana3.png" alt="Cabaña de madera elevada con galería frontal" />
               <figcaption>Cabaña con galería y techo inclinado</figcaption>
+              <div class="cabin-card-overlay"><span class="cabin-card-cta">Ver más →</span></div>
             </figure>
-            <figure>
+            <figure class="cabin-card" data-cabin-index="3" role="button" tabindex="0" aria-label="Ver detalle de esta cabaña">
               <img src="assets/cabana-4.png" alt="Cabaña de madera en campo abierto con galería lateral" />
               <figcaption>Cabaña en campo abierto con galería lateral</figcaption>
+              <div class="cabin-card-overlay"><span class="cabin-card-cta">Ver más →</span></div>
             </figure>
           </div>
         </div>
@@ -242,6 +246,54 @@
       <span>Fabricación artesanal de cabañas en madera.</span>
       <a href="#inicio">Volver al inicio</a>
     </footer>
+
+    <!-- Modal de detalle de cabaña -->
+    <div class="cabin-modal-overlay" id="cabinModalOverlay" role="dialog" aria-modal="true" aria-labelledby="cabinModalTitle" hidden>
+      <div class="cabin-modal">
+        <button class="cabin-modal-close" id="cabinModalClose" aria-label="Cerrar detalle">✕</button>
+
+        <div class="cabin-modal-hero">
+          <img class="cabin-modal-hero-img" id="cabinModalHeroImg" src="" alt="" />
+          <div class="cabin-modal-hero-shade"></div>
+          <div class="cabin-modal-hero-info">
+            <p class="cabin-modal-tag">Cabaña realizada</p>
+            <h2 class="cabin-modal-title" id="cabinModalTitle"></h2>
+          </div>
+        </div>
+
+        <div class="cabin-modal-body">
+          <p class="cabin-modal-desc" id="cabinModalDesc"></p>
+
+          <div class="cabin-modal-details" id="cabinModalDetails"></div>
+
+          <div class="cabin-modal-section" id="cabinInteriorSection">
+            <h3 class="cabin-modal-section-title">
+              <span class="cabin-modal-section-icon">🏠</span> Interior
+            </h3>
+            <div class="cabin-modal-gallery" id="cabinInteriorGallery"></div>
+          </div>
+
+          <div class="cabin-modal-section" id="cabinConstructionSection">
+            <h3 class="cabin-modal-section-title">
+              <span class="cabin-modal-section-icon">🔨</span> Proceso de construcción
+            </h3>
+            <div class="cabin-modal-gallery" id="cabinConstructionGallery"></div>
+          </div>
+
+          <div class="cabin-modal-cta">
+            <a class="button primary" href="#consulta" id="cabinModalCtaBtn">Consultar este proyecto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox de imagen ampliada -->
+    <div class="lightbox-overlay" id="lightboxOverlay" hidden>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagen anterior">‹</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
+      <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">✕</button>
+    </div>
 
     <script>
       if (window.netlifyIdentity) {

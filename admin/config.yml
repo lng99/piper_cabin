@@ -65,10 +65,37 @@ collections:
               - label: "Fotos"
                 name: "items"
                 widget: "list"
+                label_singular: "Cabaña"
                 fields:
-                  - { label: "Imagen", name: "image", widget: "image" }
+                  - { label: "Imagen principal (exterior)", name: "image", widget: "image" }
                   - { label: "Texto alternativo", name: "alt", widget: "string", required: false }
-                  - { label: "Descripción visible", name: "caption", widget: "string" }
+                  - { label: "Descripción visible en el carrusel", name: "caption", widget: "string" }
+                  - { label: "Nombre de la cabaña", name: "name", widget: "string" }
+                  - { label: "Descripción detallada", name: "description", widget: "text", required: false }
+                  - label: "Datos clave (ej: Superficie, Dormitorios)"
+                    name: "details"
+                    widget: "list"
+                    required: false
+                    label_singular: "Dato"
+                    fields:
+                      - { label: "Etiqueta", name: "label", widget: "string" }
+                      - { label: "Valor", name: "value", widget: "string" }
+                  - label: "Fotos del interior"
+                    name: "interiorImages"
+                    widget: "list"
+                    required: false
+                    label_singular: "Foto"
+                    fields:
+                      - { label: "Imagen", name: "image", widget: "image" }
+                      - { label: "Texto alternativo", name: "alt", widget: "string", required: false }
+                  - label: "Fotos del proceso de construcción"
+                    name: "constructionImages"
+                    widget: "list"
+                    required: false
+                    label_singular: "Foto"
+                    fields:
+                      - { label: "Imagen", name: "image", widget: "image" }
+                      - { label: "Texto alternativo", name: "alt", widget: "string", required: false }
           - label: "Servicios"
             name: "services"
             widget: "object"

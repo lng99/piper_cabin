@@ -13,6 +13,8 @@ loadSiteContent()
   .finally(() => {
     initCarousels();
     initForm();
+    initCabinModal();
+    initLightbox();
   });
 
 async function loadSiteContent() {
@@ -79,14 +81,28 @@ function renderGallery(gallery) {
   if (!track || !gallery.items) return;
   track.innerHTML = gallery.items
     .map(
-      (item) => `
-        <figure>
+      (item, index) => `
+        <figure class="cabin-card" data-cabin-index="${index}" role="button" tabindex="0" aria-label="Ver detalle de ${escapeAttribute(item.name || item.caption)}">
           <img src="${escapeAttribute(item.image)}" alt="${escapeAttribute(item.alt || item.caption || "Cabaña de madera")}" />
           <figcaption>${escapeHtml(item.caption)}</figcaption>
+          <div class="cabin-card-overlay">
+            <span class="cabin-card-cta">Ver más <span aria-hidden="true">→</span></span>
+          </div>
         </figure>
       `,
     )
     .join("");
+
+  // Bind click events on newly rendered cards
+  track.querySelectorAll(".cabin-card").forEach((card) => {
+    card.addEventListener("click", () => openCabinModal(parseInt(card.dataset.cabinIndex, 10)));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openCabinModal(parseInt(card.dataset.cabinIndex, 10));
+      }
+    });
+  });
 }
 
 function renderServices(services) {
@@ -149,6 +165,8 @@ function contactItem(icon, extraClass, title, label) {
   `;
 }
 
+// ─── Carrusel ────────────────────────────────────────────────────────────────
+
 function initCarousels() {
   document.querySelectorAll("[data-carousel-next]").forEach((button) => {
     button.addEventListener("click", () => moveCarousel(button.dataset.carouselNext, 1));
@@ -167,6 +185,176 @@ function moveCarousel(name, direction) {
   const step = card ? card.getBoundingClientRect().width + 18 : 360;
   track.scrollBy({ left: step * direction, behavior: "smooth" });
 }
+
+// ─── Modal de cabaña ─────────────────────────────────────────────────────────
+
+let currentCabinIndex = -1;
+
+const modalOverlay = document.getElementById("cabinModalOverlay");
+const modalClose = document.getElementById("cabinModalClose");
+const modalHeroImg = document.getElementById("cabinModalHeroImg");
+const modalTitle = document.getElementById("cabinModalTitle");
+const modalDesc = document.getElementById("cabinModalDesc");
+const modalDetails = document.getElementById("cabinModalDetails");
+const interiorSection = document.getElementById("cabinInteriorSection");
+const interiorGallery = document.getElementById("cabinInteriorGallery");
+const constructionSection = document.getElementById("cabinConstructionSection");
+const constructionGallery = document.getElementById("cabinConstructionGallery");
+
+function initCabinModal() {
+  if (!modalOverlay) return;
+
+  modalClose.addEventListener("click", closeCabinModal);
+
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) closeCabinModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modalOverlay.hidden) closeCabinModal();
+  });
+
+  // Click en cards estáticas del HTML (si no se renderizaron desde JS)
+  document.querySelectorAll(".cabin-card").forEach((card) => {
+    card.addEventListener("click", () => openCabinModal(parseInt(card.dataset.cabinIndex, 10)));
+  });
+}
+
+function openCabinModal(index) {
+  const items = siteContent?.gallery?.items;
+  if (!items || !items[index]) return;
+
+  currentCabinIndex = index;
+  const cabin = items[index];
+
+  modalHeroImg.src = cabin.image || "";
+  modalHeroImg.alt = cabin.alt || cabin.name || "";
+  modalTitle.textContent = cabin.name || cabin.caption || "";
+  modalDesc.textContent = cabin.description || "";
+  modalDesc.hidden = !cabin.description;
+
+  // Datos clave
+  if (cabin.details && cabin.details.length > 0) {
+    modalDetails.hidden = false;
+    modalDetails.innerHTML = cabin.details
+      .map((d) => `<div class="cabin-detail-chip"><span class="chip-label">${escapeHtml(d.label)}</span><span class="chip-value">${escapeHtml(d.value)}</span></div>`)
+      .join("");
+  } else {
+    modalDetails.hidden = true;
+    modalDetails.innerHTML = "";
+  }
+
+  // Galería interior
+  renderModalGallery(interiorSection, interiorGallery, cabin.interiorImages || [], "interior");
+
+  // Galería proceso
+  renderModalGallery(constructionSection, constructionGallery, cabin.constructionImages || [], "construction");
+
+  // CTA
+  const ctaBtn = document.getElementById("cabinModalCtaBtn");
+  if (ctaBtn) {
+    const msg = encodeURIComponent(`Hola, me interesa consultar por la cabaña: ${cabin.name || cabin.caption}`);
+    const number = siteContent?.contact?.whatsappNumber || "540111524967668";
+    ctaBtn.href = `https://wa.me/${number}?text=${msg}`;
+    ctaBtn.textContent = "Consultar este proyecto";
+  }
+
+  modalOverlay.hidden = false;
+  document.body.classList.add("modal-open");
+  modalClose.focus();
+}
+
+function renderModalGallery(section, gallery, images, type) {
+  if (!images || images.length === 0) {
+    section.hidden = true;
+    gallery.innerHTML = "";
+    return;
+  }
+
+  section.hidden = false;
+  gallery.innerHTML = images
+    .map(
+      (img, i) => `
+        <button class="modal-thumb" data-gallery-type="${type}" data-gallery-index="${i}" aria-label="Ampliar foto ${i + 1}">
+          <img src="${escapeAttribute(img.image)}" alt="${escapeAttribute(img.alt || "")}" loading="lazy" />
+        </button>
+      `,
+    )
+    .join("");
+
+  gallery.querySelectorAll(".modal-thumb").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const galleryType = btn.dataset.galleryType;
+      const idx = parseInt(btn.dataset.galleryIndex, 10);
+      const cabin = siteContent?.gallery?.items?.[currentCabinIndex];
+      if (!cabin) return;
+      const imgs = galleryType === "interior" ? cabin.interiorImages : cabin.constructionImages;
+      openLightbox(imgs || [], idx);
+    });
+  });
+}
+
+function closeCabinModal() {
+  modalOverlay.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+// ─── Lightbox ────────────────────────────────────────────────────────────────
+
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+const lightboxOverlay = document.getElementById("lightboxOverlay");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+const lightboxClose = document.getElementById("lightboxClose");
+
+function initLightbox() {
+  if (!lightboxOverlay) return;
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightboxOverlay.addEventListener("click", (e) => {
+    if (e.target === lightboxOverlay) closeLightbox();
+  });
+  lightboxPrev.addEventListener("click", (e) => { e.stopPropagation(); moveLightbox(-1); });
+  lightboxNext.addEventListener("click", (e) => { e.stopPropagation(); moveLightbox(1); });
+
+  document.addEventListener("keydown", (e) => {
+    if (lightboxOverlay.hidden) return;
+    if (e.key === "ArrowLeft") moveLightbox(-1);
+    if (e.key === "ArrowRight") moveLightbox(1);
+    if (e.key === "Escape") closeLightbox();
+  });
+}
+
+function openLightbox(images, index) {
+  lightboxImages = images;
+  lightboxIndex = index;
+  updateLightboxImage();
+  lightboxOverlay.hidden = false;
+}
+
+function updateLightboxImage() {
+  const img = lightboxImages[lightboxIndex];
+  if (!img) return;
+  lightboxImg.src = img.image || "";
+  lightboxImg.alt = img.alt || "";
+  lightboxPrev.style.display = lightboxImages.length > 1 ? "" : "none";
+  lightboxNext.style.display = lightboxImages.length > 1 ? "" : "none";
+}
+
+function moveLightbox(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  updateLightboxImage();
+}
+
+function closeLightbox() {
+  lightboxOverlay.hidden = true;
+  lightboxImages = [];
+}
+
+// ─── Formulario ──────────────────────────────────────────────────────────────
 
 function initForm() {
   if (!form) return;
@@ -196,6 +384,8 @@ function initForm() {
     form.reset();
   });
 }
+
+// ─── Utilidades ──────────────────────────────────────────────────────────────
 
 function whatsappUrl(number, message) {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;

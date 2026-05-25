@@ -45,48 +45,71 @@
     "carouselTitle": "Cabañas realizadas",
     "items": [
       {
-        "image": "assets/cabana-1.jpg",
-        "alt": "Cabaña compacta de madera con deck frontal",
+        "details": [],
         "caption": "Cabaña compacta con deck frontal",
+        "interiorImages": [],
+        "alt": "Cabaña compacta de madera con deck frontal",
+        "constructionImages": [],
         "name": "Cabaña compacta con deck frontal",
-        "description": "",
-        "details": [],
         "exteriorImages": [],
-        "interiorImages": [],
-        "constructionImages": []
+        "image": "assets/cabana-1.jpg",
+        "description": ""
       },
       {
-        "image": "assets/cabana-2.jpg",
-        "alt": "Cabaña de madera con deck amplio y baranda exterior",
+        "details": [],
         "caption": "Deck amplio con baranda y acceso exterior",
+        "interiorImages": [],
+        "alt": "Cabaña de madera con deck amplio y baranda exterior",
+        "constructionImages": [],
         "name": "Deck amplio con baranda y acceso exterior",
-        "description": "",
-        "details": [],
         "exteriorImages": [],
-        "interiorImages": [],
-        "constructionImages": []
+        "image": "assets/cabana-2.jpg",
+        "description": ""
       },
       {
-        "image": "assets/cabana3.png",
-        "alt": "Cabaña de madera elevada con galería frontal",
+        "details": [],
         "caption": "Cabaña con galería y techo inclinado",
-        "name": "Cabaña con galería y techo inclinado",
-        "description": "",
-        "details": [],
-        "exteriorImages": [],
         "interiorImages": [],
-        "constructionImages": []
+        "alt": "Cabaña de madera elevada con galería frontal",
+        "constructionImages": [],
+        "name": "Cabaña con galería y techo inclinado",
+        "exteriorImages": [],
+        "image": "assets/cabana3.png",
+        "description": ""
       },
       {
-        "image": "assets/cabana-4.png",
-        "alt": "Cabaña de madera en campo abierto con galería lateral",
-        "caption": "Cabaña en campo abierto con galería lateral",
-        "name": "Cabaña en campo abierto con galería lateral",
-        "description": "",
         "details": [],
-        "exteriorImages": [],
-        "interiorImages": [],
-        "constructionImages": []
+        "caption": "Cabaña en campo abierto con galería lateral",
+        "interiorImages": [
+          {
+            "image": "assets/uploads/foto_interior1.jpg"
+          },
+          {
+            "image": "assets/uploads/foto_interior2.jpg"
+          },
+          {
+            "image": "assets/uploads/foto_interior3.jpg"
+          },
+          {
+            "image": "assets/uploads/foto_interior4.jpg"
+          },
+          {
+            "image": "assets/uploads/foto_interior5.jpg"
+          }
+        ],
+        "alt": "Cabaña de madera en campo abierto con galería lateral",
+        "constructionImages": [],
+        "name": "Cabaña en campo abierto con galería lateral",
+        "exteriorImages": [
+          {
+            "image": "assets/uploads/cabaña4.3jpg.jpg"
+          },
+          {
+            "image": "assets/uploads/cabaña4.3jpg.jpg"
+          }
+        ],
+        "image": "assets/cabana-4.png",
+        "description": "Cabaña de estilo moderno-rústico construida sobre pilotes, con estructura rectangular y revestimiento exterior en madera natural tratada. Cuenta con cubierta de una sola pendiente (mono-pitch), amplios aleros y una galería lateral techada sostenida por columnas metálicas y postes de madera. La fachada incorpora carpinterías oscuras de líneas simples, con ventana frontal de aluminio y puerta principal metálica. El acceso se realiza mediante escalera elevada con barandas de madera. El diseño prioriza funcionalidad, ventilación natural y adaptación al entorno abierto, ideal para uso recreativo o vivienda compacta en áreas rurales."
       }
     ]
   },
@@ -118,21 +141,21 @@
     ]
   },
   "contact": {
+    "addressLabel": "Ubicación",
+    "whatsappButton": "Hablar por WhatsApp",
+    "phoneLabel": "Lunes a sábado, 8:00 a 18:00",
+    "facebookUrl": "https://www.facebook.com/profile.php?id=61585999135006",
     "eyebrow": "Consultas y presupuestos",
-    "title": "Contame qué cabaña querés construir",
     "text": "Enviá la ubicación del terreno, uso esperado y medidas aproximadas. Te respondo con una primera orientación para avanzar con el presupuesto.",
     "phone": "011 15-2496-7668",
-    "phoneLabel": "Lunes a sábado, 8:00 a 18:00",
-    "email": "pipercarpinteria@gmail.com",
-    "emailLabel": "Correo electrónico",
-    "facebookName": "Piper",
-    "facebookUrl": "https://www.facebook.com/profile.php?id=61585999135006",
     "facebookLabel": "Facebook",
+    "facebookName": "Piper",
     "address": "Tómas de Anchorena, Pilar, Argentina, 1629",
-    "addressLabel": "Ubicación",
-    "whatsappNumber": "540111524967668",
     "whatsappMessage": "Hola, quiero consultar por una cabaña a medida.",
-    "whatsappButton": "Hablar por WhatsApp"
+    "emailLabel": "Correo electrónico",
+    "title": "Contame qué cabaña querés construir",
+    "whatsappNumber": "540111524967668",
+    "email": "pipercarpinteria@gmail.com"
   },
   "footer": {
     "name": "Piper Cabañas",

@@ -224,6 +224,14 @@ function initCabinModal() {
     card.addEventListener("click", () => openCabinModal(parseInt(card.dataset.cabinIndex, 10)));
   });
 
+  if (modalHeroImg) {
+    modalHeroImg.addEventListener("click", () => {
+      if (currentHeroImages.length > 0) {
+        openLightbox(currentHeroImages, currentHeroImageIndex);
+      }
+    });
+  }
+
   if (heroPrevBtn) heroPrevBtn.addEventListener("click", (e) => { e.stopPropagation(); moveHeroCarousel(-1); });
   if (heroNextBtn) heroNextBtn.addEventListener("click", (e) => { e.stopPropagation(); moveHeroCarousel(1); });
 }

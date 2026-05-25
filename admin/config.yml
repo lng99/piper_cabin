@@ -80,6 +80,14 @@ collections:
                     fields:
                       - { label: "Etiqueta", name: "label", widget: "string" }
                       - { label: "Valor", name: "value", widget: "string" }
+                  - label: "Fotos exteriores (para el carrusel principal)"
+                    name: "exteriorImages"
+                    widget: "list"
+                    required: false
+                    label_singular: "Foto"
+                    fields:
+                      - { label: "Imagen", name: "image", widget: "image" }
+                      - { label: "Texto alternativo", name: "alt", widget: "string", required: false }
                   - label: "Fotos del interior"
                     name: "interiorImages"
                     widget: "list"

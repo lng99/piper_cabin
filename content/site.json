@@ -51,6 +51,7 @@
         "name": "Cabaña compacta con deck frontal",
         "description": "",
         "details": [],
+        "exteriorImages": [],
         "interiorImages": [],
         "constructionImages": []
       },
@@ -61,6 +62,7 @@
         "name": "Deck amplio con baranda y acceso exterior",
         "description": "",
         "details": [],
+        "exteriorImages": [],
         "interiorImages": [],
         "constructionImages": []
       },
@@ -71,6 +73,7 @@
         "name": "Cabaña con galería y techo inclinado",
         "description": "",
         "details": [],
+        "exteriorImages": [],
         "interiorImages": [],
         "constructionImages": []
       },
@@ -81,6 +84,7 @@
         "name": "Cabaña en campo abierto con galería lateral",
         "description": "",
         "details": [],
+        "exteriorImages": [],
         "interiorImages": [],
         "constructionImages": []
       }

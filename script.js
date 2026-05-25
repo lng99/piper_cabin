@@ -189,6 +189,8 @@ function moveCarousel(name, direction) {
 // ─── Modal de cabaña ─────────────────────────────────────────────────────────
 
 let currentCabinIndex = -1;
+let currentHeroImages = [];
+let currentHeroImageIndex = 0;
 
 const modalOverlay = document.getElementById("cabinModalOverlay");
 const modalClose = document.getElementById("cabinModalClose");
@@ -200,6 +202,9 @@ const interiorSection = document.getElementById("cabinInteriorSection");
 const interiorGallery = document.getElementById("cabinInteriorGallery");
 const constructionSection = document.getElementById("cabinConstructionSection");
 const constructionGallery = document.getElementById("cabinConstructionGallery");
+const heroPrevBtn = document.getElementById("heroPrev");
+const heroNextBtn = document.getElementById("heroNext");
+const heroCounter = document.getElementById("heroCounter");
 
 function initCabinModal() {
   if (!modalOverlay) return;
@@ -218,6 +223,35 @@ function initCabinModal() {
   document.querySelectorAll(".cabin-card").forEach((card) => {
     card.addEventListener("click", () => openCabinModal(parseInt(card.dataset.cabinIndex, 10)));
   });
+
+  if (heroPrevBtn) heroPrevBtn.addEventListener("click", (e) => { e.stopPropagation(); moveHeroCarousel(-1); });
+  if (heroNextBtn) heroNextBtn.addEventListener("click", (e) => { e.stopPropagation(); moveHeroCarousel(1); });
+}
+
+function updateHeroImage() {
+  if (currentHeroImages.length === 0) return;
+  const img = currentHeroImages[currentHeroImageIndex];
+  modalHeroImg.src = img.image || "";
+  modalHeroImg.alt = img.alt || "";
+  
+  if (currentHeroImages.length > 1) {
+    if (heroPrevBtn) heroPrevBtn.style.display = "";
+    if (heroNextBtn) heroNextBtn.style.display = "";
+    if (heroCounter) {
+      heroCounter.style.display = "";
+      heroCounter.textContent = `${currentHeroImageIndex + 1} / ${currentHeroImages.length}`;
+    }
+  } else {
+    if (heroPrevBtn) heroPrevBtn.style.display = "none";
+    if (heroNextBtn) heroNextBtn.style.display = "none";
+    if (heroCounter) heroCounter.style.display = "none";
+  }
+}
+
+function moveHeroCarousel(dir) {
+  if (currentHeroImages.length <= 1) return;
+  currentHeroImageIndex = (currentHeroImageIndex + dir + currentHeroImages.length) % currentHeroImages.length;
+  updateHeroImage();
 }
 
 function openCabinModal(index) {
@@ -227,8 +261,13 @@ function openCabinModal(index) {
   currentCabinIndex = index;
   const cabin = items[index];
 
-  modalHeroImg.src = cabin.image || "";
-  modalHeroImg.alt = cabin.alt || cabin.name || "";
+  currentHeroImages = [{ image: cabin.image, alt: cabin.alt || cabin.name || "" }];
+  if (cabin.exteriorImages && cabin.exteriorImages.length > 0) {
+    currentHeroImages = currentHeroImages.concat(cabin.exteriorImages);
+  }
+  currentHeroImageIndex = 0;
+  updateHeroImage();
+
   modalTitle.textContent = cabin.name || cabin.caption || "";
   modalDesc.textContent = cabin.description || "";
   modalDesc.hidden = !cabin.description;
